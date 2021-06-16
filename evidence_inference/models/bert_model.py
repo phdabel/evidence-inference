@@ -120,6 +120,7 @@ class BertClassifier(nn.Module):
             #position_ids.append(torch.tensor(list(range(0, len(q) + 1)) + list(range(0, len(d) + 1))))
         bert_input = PaddedSequence.autopad(input_tensors, batch_first=True, padding_value=self.pad_token_id, device=target_device)
         positions = PaddedSequence.autopad(position_ids, batch_first=True, padding_value=0, device=target_device)
-        (classes,) = self.bert(bert_input.data, attention_mask=bert_input.mask(on=1.0, off=0.0, dtype=torch.float, device=target_device), position_ids=positions.data)
+        outputs = self.bert(bert_input.data, attention_mask=bert_input.mask(on=1.0, off=0.0, dtype=torch.float, device=target_device), position_ids=positions.data)
+        classes = outputs.logits
         assert torch.all(classes == classes) # for nans
         return classes

@@ -12,3 +12,6 @@ embeddings/
 logs
 ..gitignore.un~
 .gitignore~
+
+outputs
+notebooks

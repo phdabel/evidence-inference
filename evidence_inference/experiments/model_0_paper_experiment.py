@@ -175,7 +175,7 @@ def replace_articles_with_evidence_spans(train_Xy, val_Xy, test_Xy, inference_ve
             all_evidences = list(filter(lambda x: type(x) is str and len(x) > 0, set([x[1] for x in inst['y']])))
             if len(all_evidences) == 0:
                 continue
-            evidence = stats.mode(all_evidences)[0][0]
+            evidence = stats.mode(all_evidences, keepdims=True)[0][0]
             inst['article'] = inference_vectorizer.string_to_seq(evidence)
             if len(evidence) == 0 or len(inst['article']) == 0:
                 continue

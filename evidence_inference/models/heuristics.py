@@ -249,10 +249,10 @@ def main():
         data[p[0]] = {'xml': p[1], 'outcome': p[2], 'intervention': p[3], 'comparator': p[4], 'answer': '', 'reasoning': ''}
         
     for a in annotations:
-        if (a[3]):
-            data[a[1]]['answer'] = a[7]
-        if (a[4]):
-            data[a[1]]['reasoning'] += str(a[6]) + "; "
+        if a[4]:
+            data[a[2]]['answer'] = a[6]
+        if a[5]:
+            data[a[2]]['reasoning'] += str(a[7]) + "; "
        
     test_id = preprocessor.test_document_ids()
     # get predictions and add them to array

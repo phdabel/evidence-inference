@@ -79,7 +79,7 @@ def load_data(use_test, bow=True):
             # add to correct pile: train/val/test
             tmp   = [article_text, out, inter, cmp]
             tmp1  = [article_text, out, cmp, inter]
-            loss  = stats.mode([l1[0] for l1 in labels])[0][0]
+            loss  = stats.mode([l1[0] for l1 in labels], keepdims=True)[0][0]
             loss1 = loss * -1
             
             if id_ in dev_doc_ids and not(use_test):
@@ -127,7 +127,7 @@ def main(iterations, use_test = False):
     f1 = f1_score(y_test, preds, average='macro')
 
     # calculate the majority class f1 and accuracy
-    mode = stats.mode(y_train)[0][0][0]
+    mode = stats.mode(y_train, keepdims=True)[0][0][0]
     majority_guess = [mode for _ in preds]
     guess_acc = accuracy_score(y_test, majority_guess)
     guess_f1 = f1_score(y_test, majority_guess, average='macro')

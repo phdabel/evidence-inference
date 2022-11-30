@@ -76,7 +76,7 @@ def train(train_Xy, n_epochs=4, batch_size=4): # val_Xy
 
         for i, article in enumerate(train_Xy):
             if (i % 100) == 0: 
-                print ("on article", i)
+                print("on article", i)
            
             # sample instances from current article
             cur_X, cur_y = instances_from_article(article, max_instances=batch_size-cur_batch_size)

@@ -63,7 +63,7 @@ def parse_prompt_id_data(annotations, prompts, pids, i):
     # match up reasonings with text
     for r in res:    
         tmp = [article_text, r, out, inter, cmp]
-        loss = stats.mode([l1[0] for l1 in labels])[0][0]
+        loss = stats.mode([l1[0] for l1 in labels], keepdims=True)[0][0]
         
         data.append(tmp)
         losses.append(loss)
@@ -172,7 +172,7 @@ def main(iterations, use_test = False):
     f1 = f1_score(y_test, preds, average='macro')
 
     # calculate the majority class f1 and accuracy
-    mode = stats.mode(y_train)[0][0][0]
+    mode = stats.mode(y_train, keepdims=True)[0][0][0]
     majority_guess = [mode for _ in preds]
     guess_acc = accuracy_score(y_test, majority_guess)
     guess_f1 = f1_score(y_test, majority_guess, average='macro')

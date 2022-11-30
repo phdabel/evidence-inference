@@ -3,7 +3,7 @@
     "val_data": "annotations/splits/ev1_validation_article_ids.txt",
     "test_data": "annotations/splits/test_article_ids.txt",
     "bert_vocab": "embeddings/scibert_scivocab_uncased",
-    "bert_dir": "embeddings/scibert_scivocab_uncased",
+    "bert_dir": "embeedings/scibert_scivocab_uncased",
     "max_length": 512,
     "evidence_identifier": {
         "use_half_precision": 0,

@@ -11,3 +11,6 @@ ftfy
 pattern
 lxml
 spacy
+scispacy
+dacite
+frozendict

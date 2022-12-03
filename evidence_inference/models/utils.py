@@ -37,7 +37,7 @@ class PaddedSequence:
         return PaddedSequence(padded, batch_lengths, batch_first).to(device=device)
 
     def pack_other(self, data: torch.Tensor):
-        return pack_padded_sequence(data, self.batch_sizes, batch_first=self.batch_first, enforce_sorted=False)
+        return pack_padded_sequence(data, self.batch_sizes.cpu(), batch_first=self.batch_first, enforce_sorted=False)
 
     @classmethod
     def from_packed_sequence(cls, ps: PackedSequence, batch_first: bool, padding_value=0) -> 'PaddedSequence':
